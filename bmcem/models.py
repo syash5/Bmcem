@@ -37,6 +37,7 @@ class UserProfile(AbstractUser):
 #Gallery
 
 class Gallery(models.Model):
+    title = models.CharField(max_length=100,default="")
     photos = models.ImageField(default='default.png', blank=True)
 
 
