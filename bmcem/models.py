@@ -13,7 +13,6 @@ class UserProfile(AbstractUser):
 
     username = models.CharField('username', max_length=100, unique=True, default="username Should be more than 6 letters,alphanumeric and first letter should be alphabet")
     full_name= models.CharField(max_length=50, default="",blank= False)
-    dob = models.DateField(auto_now_add=True, blank=False)
 
     GENDER_CHOICES = (
         ('male', 'Male'),
@@ -39,6 +38,23 @@ class UserProfile(AbstractUser):
 class Gallery(models.Model):
     title = models.CharField(max_length=100,default="")
     photos = models.ImageField(default='default.png', blank=True)
+
+
+
+#Events
+class Events(models.Model):
+    title = models.CharField(max_length=100)
+    body = models.TextField(default='Body')
+    date = models.DateTimeField(auto_now_add=True, blank=False)
+    thumb = models.ImageField(default='default.png', blank=True)
+    author = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    # school = models.OneToOneField(School, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    def snippet(self):
+        return self.body[:150] + '...'
 
 
 
@@ -78,7 +94,6 @@ class NewsLetter(models.Model):
 
 class AdmissionQuery(models.Model):
     full_name = models.CharField(max_length=50, default="", blank=False)
-    dob = models.DateField(auto_now_add=True, blank=False)
     last_edu_qualification = models.CharField(max_length=150,default="Please Mention Your Last Educational Qualification")
     applying_for = models.CharField(max_length=150,default="Which Programme You Want To Apply For")
     branch = models.CharField(max_length=100,default="Mention The Branch You Want To Apply For")

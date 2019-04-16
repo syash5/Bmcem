@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bmcem',
+    'crispy_forms',
 ]
 
 AUTH_USER_MODEL = 'bmcem.UserProfile'
