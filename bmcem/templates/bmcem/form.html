@@ -1,10 +1,14 @@
-{% extends 'base_layout.html' %}
+{% extends 'bmcem/base.html' %}
 {% load crispy_forms_tags %}
 
 
+{% block title %}Form{% endblock%}
+ 
 
+{% block body %}
 
-{% block content %}
+<div class="home">
+		<div class="breadcrumbs_container">
 <div class="container">
 <h2 class="md-text">{{ title }}</h2><hr>
 <form class="form-horizontal"  method="POST" action="" enctype='multipart/form-data'>
@@ -15,4 +19,6 @@
         </div>
 </form>
     </div>
-{% endblock content %}
+    </div>
+    </div>
+{% endblock%}
